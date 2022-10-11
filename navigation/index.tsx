@@ -18,6 +18,8 @@ import ChatRoomScreen from "../screens/ChatRoomScreen";
 import { RootStackParamList } from "../types";
 import LinkingConfiguration from "./LinkingConfiguration";
 import BottomTabNavigator from "./BottomNavigator";
+import HomeScreen from "../screens/HomeScreen";
+import HomeHeader from "../components/HomeHeaderComponents/HomeHeader";
 
 export default function Navigation({
   colorScheme,
@@ -25,6 +27,8 @@ export default function Navigation({
   colorScheme: ColorSchemeName;
 }) {
   return (
+    //! Use this line to make dark/light mide colorScheme === "dark" ? DarkTheme :  */}
+
     <NavigationContainer
       linking={LinkingConfiguration}
       theme={colorScheme === "dark" ? DarkTheme : DefaultTheme}
@@ -42,16 +46,25 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 
 function RootNavigator() {
   return (
-    <Stack.Navigator initialRouteName="ChatRoom">
+    <Stack.Navigator initialRouteName="Root">
       <Stack.Screen
+        name="Root"
+        component={HomeScreen}
+        options={{
+          headerTitle: (props) => <HomeHeader />,
+          headerTitleAlign: "center",
+        }}
+      />
+      {/* <Stack.Screen
         name="Root"
         component={BottomTabNavigator}
         options={{ headerShown: false }}
-      />
+      /> */}
       <Stack.Screen
         name="ChatRoom"
         component={ChatRoomScreen}
-        options={{ headerShown: true }}
+        options={{ 
+         }}
       />
       <Stack.Screen
         name="NotFound"

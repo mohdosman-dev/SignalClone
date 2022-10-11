@@ -1,11 +1,16 @@
+import { useNavigation } from "@react-navigation/native";
 import { StyleSheet, Image, TouchableOpacity } from "react-native";
 import { Text, View } from "../Themed";
 import styles from "./styles";
 
-const ChatRowItem = ({ chatRoom, navigator }: any) => {
+const ChatRowItem = ({ chatRoom }: any) => {
   const user = chatRoom.users[1];
+  const navigator = useNavigation();
+  const onPressed = () => {
+    navigator.navigate("ChatRoom", { chatRoom });
+  };
   return (
-    <TouchableOpacity onPress={() => navigator}>
+    <TouchableOpacity onPress={onPressed}>
       <View style={styles.container}>
         <Image
           source={{

@@ -17,7 +17,9 @@ const HomeScreen = ({ navigation }: RootTabScreenProps<"TabOne">) => (
 );
 
 const styles = StyleSheet.create({
-  container: {},
+  container: {
+    flex: 1,
+  },
 });
 
 export default HomeScreen;
